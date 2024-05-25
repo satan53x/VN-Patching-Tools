@@ -224,7 +224,7 @@ public class Program {
         foreach (var child in children)
         {
             if (!child.Name.EndsWith(".ws2")) continue;
-            var srcName= Path.Combine(child.Name, "text.txt");
+            var srcName= Path.Combine(src, child.Name, "text.txt");
             var dstName = child.Name.Substring(0, child.Name.LastIndexOf(".")) + ".txt";
             await dstFolder.CopyFiles(new[] { srcName }, new[] { dstName }, _ => true, ct, progress);
             WriteOutput("Extract to: " + dstName);

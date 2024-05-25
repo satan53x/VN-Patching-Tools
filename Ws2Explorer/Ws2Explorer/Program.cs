@@ -61,6 +61,8 @@ public class Program {
                 case "version": await PrintWs2Version(args, ct); break;
                 case "extract_text": await ExtractText(args, ct); break;
                 case "insert_text": await InsertText(args, ct); break;
+                case "extract_text_folder": await ExtractTextFolder(args, ct); break;
+                case "insert_text_folder": await InsertTextFolder(args, ct); break;
                 case "decompile": await DecompileFile(args, ct); break;
                 case "compile": await CompileFile(args, ct); break;
                 default: throw new ArgumentException($"Unknown command {op}.");
@@ -85,6 +87,8 @@ public class Program {
         WriteOutput("  version <ws2_file>                    Print the version of a ws2 file.");
         WriteOutput("  extract_text <ws2> <output_path>      Extract text from ws2 files.");
         WriteOutput("  insert_text <text> <output_path>      Insert extracted text back into existing ws2 files.");
+        WriteOutput("  extract_text_folder <ws2_folder> <txt_folder>      Extract text from ws2 files.");
+        WriteOutput("  insert_text_folder <txt_folder> <ws2_folder>      Insert extracted text back into existing ws2 files.");
         WriteOutput("  decompile <ws2_file> <output_path>    Decompile a ws2 file.");
         WriteOutput("  compile <code_file> <output_path> <v1|v2|v3|v4> [-e]");
         WriteOutput("                                        Compile a ws2 file using the given ws2 version (optionally with encryption).");
@@ -200,13 +204,49 @@ public class Program {
         var dst = args[2];
         var (dstFolderName, dstName) = ParseFolderAndFilename(dst);
         var dstFolder = await Folder.GetFolder(dstFolderName, ct, progress);
-        await dstFolder.CopyFiles(new[] { Path.Combine(src, "text.json") }, new[] { dstName }, _ => true, ct, progress);
+        await dstFolder.CopyFiles(new[] { Path.Combine(src, "text.txt") }, new[] { dstName }, _ => true, ct, progress);
     }
 
     private async Task InsertText(string[] args, CancellationToken ct) {
         var src = args[1];
         var dst = args[2];
         var dstFolder = await Folder.GetFolder(dst, ct, progress);
-        await dstFolder.CopyFiles(new[] { src }, new[] { "text.json" }, _ => true, ct, progress);
+        await dstFolder.CopyFiles(new[] { src }, new[] { "text.txt" }, _ => true, ct, progress);
+    }
+
+    private async Task ExtractTextFolder(string[] args, CancellationToken ct)
+    {
+        var src = args[1];
+        var dst = args[2];
+        var srcFolder = await Folder.GetFolder(src, ct, progress);
+        var dstFolder = await Folder.GetFolder(dst, ct, progress);
+        var children = srcFolder.ListChildren();
+        foreach (var child in children)
+        {
+            if (!child.Name.EndsWith(".ws2")) continue;
+            var srcName= Path.Combine(child.Name, "text.txt");
+            var dstName = child.Name.Substring(0, child.Name.LastIndexOf(".")) + ".txt";
+            await dstFolder.CopyFiles(new[] { srcName }, new[] { dstName }, _ => true, ct, progress);
+            WriteOutput("Extract to: " + dstName);
+        }
+        WriteOutput("Extract end!");
+    }
+
+    private async Task InsertTextFolder(string[] args, CancellationToken ct)
+    {
+        var src = args[1];
+        var dst = args[2];
+        var srcFolder = await Folder.GetFolder(src, ct, progress);
+        var children = srcFolder.ListChildren();
+        foreach (var child in children)
+        {
+            if (!child.Name.EndsWith(".txt")) continue;
+            var srcName = Path.Combine(src, child.Name);
+            var dstName = child.Name.Substring(0, child.Name.LastIndexOf(".")) + ".ws2";
+            var dstFolder = await Folder.GetFolder(Path.Combine(dst, dstName), ct, progress);
+            await dstFolder.CopyFiles(new[] { srcName }, new[] { "text.txt" }, _ => true, ct, progress);
+            WriteOutput("Insert to: " + dstName);
+        }
+        WriteOutput("Insert end!");
     }
 }

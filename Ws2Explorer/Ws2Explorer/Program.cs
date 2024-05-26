@@ -65,6 +65,8 @@ public class Program {
                 case "insert_text_folder": await InsertTextFolder(args, ct); break;
                 case "decompile": await DecompileFile(args, ct); break;
                 case "compile": await CompileFile(args, ct); break;
+                case "decompile_folder": await DecompileFolder(args, ct); break;
+                case "compile_folder": await CompileFolder(args, ct); break;
                 default: throw new ArgumentException($"Unknown command {op}.");
             }
         } catch (Exception ex) {
@@ -160,6 +162,22 @@ public class Program {
         await dstFolder.CopyFiles(new[] { Path.Combine(src, "opcodes.json") }, new[] { dstName }, _ => true, ct, progress);
     }
 
+    private async Task DecompileFolder(string[] args, CancellationToken ct)
+    {
+        var src = args[1];
+        var dst = args[2];
+        var srcFolder = await Folder.GetFolder(src, ct, progress);
+        var children = srcFolder.ListChildren();
+        foreach (var child in children)
+        {
+            var tmpArgs = GetArgs(args, src, child.Name, dst);
+            if (tmpArgs == null) continue;
+            await DecompileFile(tmpArgs, ct);
+            WriteOutput("Decompile: " + child.Name);
+        }
+        WriteOutput("Decompile end!");
+    }
+
     private async Task PrintWs2Version(string[] args, CancellationToken ct) {
         var src = args[1];
         var file = await Folder.GetFile(src, ct, progress);
@@ -199,6 +217,22 @@ public class Program {
         await CopyFiles(new[] { "cp", tempOutputPath, dst }, ct);
     }
 
+    private async Task CompileFolder(string[] args, CancellationToken ct)
+    {
+        var src = args[1];
+        var dst = args[2];
+        var srcFolder = await Folder.GetFolder(src, ct, progress);
+        var children = srcFolder.ListChildren();
+        foreach (var child in children)
+        {
+            var tmpArgs = GetArgs(args, src, child.Name, dst);
+            if (tmpArgs == null) continue;
+            await CompileFile(tmpArgs, ct);
+            WriteOutput("Compile: " + child.Name);
+        }
+        WriteOutput("Compile end!");
+    }
+
     private async Task ExtractText(string[] args, CancellationToken ct) {
         var src = args[1];
         var dst = args[2];
@@ -219,15 +253,13 @@ public class Program {
         var src = args[1];
         var dst = args[2];
         var srcFolder = await Folder.GetFolder(src, ct, progress);
-        var dstFolder = await Folder.GetFolder(dst, ct, progress);
         var children = srcFolder.ListChildren();
         foreach (var child in children)
         {
-            if (!child.Name.EndsWith(".ws2")) continue;
-            var srcName= Path.Combine(src, child.Name, "text.txt");
-            var dstName = child.Name.Substring(0, child.Name.LastIndexOf(".")) + ".txt";
-            await dstFolder.CopyFiles(new[] { srcName }, new[] { dstName }, _ => true, ct, progress);
-            WriteOutput("Extract to: " + dstName);
+            var tmpArgs = GetArgs(args, src, child.Name, dst);
+            if (tmpArgs == null) continue;
+            await ExtractText(tmpArgs, ct);
+            WriteOutput("Extract: " + child.Name);
         }
         WriteOutput("Extract end!");
     }
@@ -240,13 +272,29 @@ public class Program {
         var children = srcFolder.ListChildren();
         foreach (var child in children)
         {
-            if (!child.Name.EndsWith(".txt")) continue;
-            var srcName = Path.Combine(src, child.Name);
-            var dstName = child.Name.Substring(0, child.Name.LastIndexOf(".")) + ".ws2";
-            var dstFolder = await Folder.GetFolder(Path.Combine(dst, dstName), ct, progress);
-            await dstFolder.CopyFiles(new[] { srcName }, new[] { "text.txt" }, _ => true, ct, progress);
-            WriteOutput("Insert to: " + dstName);
+            var tmpArgs = GetArgs(args, src, child.Name, dst);
+            if (tmpArgs == null) continue;
+            await InsertText(tmpArgs, ct);
+            WriteOutput("Insert: " + child.Name);
         }
         WriteOutput("Insert end!");
+    }
+
+    private readonly Dictionary<string, string[]> FilenameConfig = new Dictionary<string, string[]> // opcode, [srcPostfix, dstPostfix]
+    {
+        {"extract_text_folder", new string[] { ".ws2", ".txt" } },
+        {"insert_text_folder", new string[] { ".txt", ".ws2" }},
+        {"decompile_folder", new string[] { ".ws2", ".json" }},
+        {"compile_folder", new string[] { ".json", ".ws2" }},
+    };
+    private string[]? GetArgs(string[] args, string srcFolder, string srcName, string dstFolder)
+    {
+        var postfixList = FilenameConfig[args[0]];
+        if (!srcName.EndsWith(postfixList[0])) return null;
+        var dstName = srcName.Substring(0, srcName.LastIndexOf(".")) + postfixList[1];
+        var tmpArgs = new List<string> { args[0], Path.Combine(srcFolder, srcName), Path.Combine(dstFolder, dstName) };
+        if (args.Length > 3) tmpArgs.Add(args[3]);
+        if (args.Length > 4) tmpArgs.Add(args[4]);
+        return tmpArgs.ToArray();
     }
 }

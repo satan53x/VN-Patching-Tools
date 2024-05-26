@@ -87,13 +87,20 @@ public class Program {
         WriteOutput("  rename <path> <new_filename>          Rename files.");
         WriteOutput("");
         WriteOutput("  version <ws2_file>                    Print the version of a ws2 file.");
-        WriteOutput("  extract_text <ws2> <output_path>      Extract text from ws2 files.");
-        WriteOutput("  insert_text <text> <output_path>      Insert extracted text back into existing ws2 files.");
-        WriteOutput("  extract_text_folder <ws2_folder> <txt_folder>      Extract text from ws2 files.");
-        WriteOutput("  insert_text_folder <txt_folder> <ws2_folder>      Insert extracted text back into existing ws2 files.");
+        WriteOutput("  extract_text <ws2> <output_path>      Extract text from a ws2 file.");
+        WriteOutput("  insert_text <text> <output_path>      Insert extracted text back into existing a ws2 file.");
+        WriteOutput("  extract_text_folder <ws2_folder> <txt_folder>");
+        WriteOutput("                                        Extract text from ws2 files.");
+        WriteOutput("  insert_text_folder <txt_folder> <ws2_folder>");
+        WriteOutput("                                        Insert extracted text back into existing ws2 files.");
+        WriteOutput("");
         WriteOutput("  decompile <ws2_file> <output_path>    Decompile a ws2 file.");
         WriteOutput("  compile <code_file> <output_path> <v1|v2|v3|v4> [-e]");
         WriteOutput("                                        Compile a ws2 file using the given ws2 version (optionally with encryption).");
+        WriteOutput("  decompile_folder <ws2_folder> <code_folder>");
+        WriteOutput("                                        Decompile ws2 files.");
+        WriteOutput("  compile_folder <code_folder> <ws2_folder> <v1|v2|v3|v4> [-e]");
+        WriteOutput("                                        Compile ws2 files using the given ws2 version (optionally with encryption).");
     }
 
     private void PrintWorkingDirectory() {

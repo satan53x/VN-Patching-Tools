@@ -23,7 +23,8 @@ partial class MainWindow {
     ///  Required method for Designer support - do not modify
     ///  the contents of this method with the code editor.
     /// </summary>
-    private void InitializeComponent() {
+    private void InitializeComponent()
+    {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
         menuStrip = new MenuStrip();
         fileToolStripMenuItem = new ToolStripMenuItem();
@@ -49,6 +50,10 @@ partial class MainWindow {
         toolStripSeparator3 = new ToolStripSeparator();
         copyToolStripMenuItem = new ToolStripMenuItem();
         pasteToolStripMenuItem = new ToolStripMenuItem();
+        toolStripSeparator9 = new ToolStripSeparator();
+        encodingToolStripMenuItem = new ToolStripMenuItem();
+        writeJISToolStripMenuItem = new ToolStripMenuItem();
+        writeGBKToolStripMenuItem = new ToolStripMenuItem();
         viewToolStripMenuItem = new ToolStripMenuItem();
         refreshToolStripMenuItem = new ToolStripMenuItem();
         toolStripSeparator6 = new ToolStripSeparator();
@@ -111,7 +116,7 @@ partial class MainWindow {
         menuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, viewToolStripMenuItem });
         menuStrip.Location = new Point(0, 0);
         menuStrip.Name = "menuStrip";
-        menuStrip.Size = new Size(800, 24);
+        menuStrip.Size = new Size(800, 25);
         menuStrip.TabIndex = 0;
         menuStrip.Text = "menuStrip1";
         // 
@@ -119,14 +124,14 @@ partial class MainWindow {
         // 
         fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openToolStripMenuItem, openFolderToolStripMenuItem, toolStripSeparator1, toolStripMenuItem1, exportToolStripMenuItem, toolStripSeparator2, preferencesToolStripMenuItem, toolStripSeparator5, exitToolStripMenuItem });
         fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-        fileToolStripMenuItem.Size = new Size(37, 20);
+        fileToolStripMenuItem.Size = new Size(39, 21);
         fileToolStripMenuItem.Text = "File";
         // 
         // openToolStripMenuItem
         // 
         openToolStripMenuItem.Name = "openToolStripMenuItem";
         openToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-        openToolStripMenuItem.Size = new Size(229, 22);
+        openToolStripMenuItem.Size = new Size(250, 22);
         openToolStripMenuItem.Text = "Open...";
         openToolStripMenuItem.Click += MenuFileOpenFileClicked;
         // 
@@ -134,20 +139,20 @@ partial class MainWindow {
         // 
         openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
         openFolderToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.O;
-        openFolderToolStripMenuItem.Size = new Size(229, 22);
+        openFolderToolStripMenuItem.Size = new Size(250, 22);
         openFolderToolStripMenuItem.Text = "Open Folder...";
         openFolderToolStripMenuItem.Click += MenuFileOpenFolderClicked;
         // 
         // toolStripSeparator1
         // 
         toolStripSeparator1.Name = "toolStripSeparator1";
-        toolStripSeparator1.Size = new Size(226, 6);
+        toolStripSeparator1.Size = new Size(247, 6);
         // 
         // toolStripMenuItem1
         // 
         toolStripMenuItem1.Name = "toolStripMenuItem1";
         toolStripMenuItem1.ShortcutKeys = Keys.Control | Keys.R;
-        toolStripMenuItem1.Size = new Size(229, 22);
+        toolStripMenuItem1.Size = new Size(250, 22);
         toolStripMenuItem1.Text = "Reveal In File Explorer";
         toolStripMenuItem1.Click += MenuFileRevealInExplorerClicked;
         // 
@@ -155,48 +160,48 @@ partial class MainWindow {
         // 
         exportToolStripMenuItem.Name = "exportToolStripMenuItem";
         exportToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.S;
-        exportToolStripMenuItem.Size = new Size(229, 22);
+        exportToolStripMenuItem.Size = new Size(250, 22);
         exportToolStripMenuItem.Text = "Export...";
         exportToolStripMenuItem.Click += MenuFileExportClicked;
         // 
         // toolStripSeparator2
         // 
         toolStripSeparator2.Name = "toolStripSeparator2";
-        toolStripSeparator2.Size = new Size(226, 6);
+        toolStripSeparator2.Size = new Size(247, 6);
         // 
         // preferencesToolStripMenuItem
         // 
         preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
         preferencesToolStripMenuItem.ShortcutKeys = Keys.F4;
-        preferencesToolStripMenuItem.Size = new Size(229, 22);
+        preferencesToolStripMenuItem.Size = new Size(250, 22);
         preferencesToolStripMenuItem.Text = "Set External Editor Paths...";
         preferencesToolStripMenuItem.Click += MenuFileSetExternalEditorPathsClicked;
         // 
         // toolStripSeparator5
         // 
         toolStripSeparator5.Name = "toolStripSeparator5";
-        toolStripSeparator5.Size = new Size(226, 6);
+        toolStripSeparator5.Size = new Size(247, 6);
         // 
         // exitToolStripMenuItem
         // 
         exitToolStripMenuItem.Name = "exitToolStripMenuItem";
         exitToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.F4;
-        exitToolStripMenuItem.Size = new Size(229, 22);
+        exitToolStripMenuItem.Size = new Size(250, 22);
         exitToolStripMenuItem.Text = "Exit";
         exitToolStripMenuItem.Click += MenuFileExitClicked;
         // 
         // editToolStripMenuItem
         // 
-        editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editInApplicationToolStripMenuItem, editHexToolStripMenuItem, toolStripSeparator4, copyFullPathToolStripMenuItem, toolStripSeparator10, renameToolStripMenuItem, deleteToolStripMenuItem, swapFilesToolStripMenuItem, toolStripMenuItem2, toolStripSeparator3, copyToolStripMenuItem, pasteToolStripMenuItem });
+        editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editInApplicationToolStripMenuItem, editHexToolStripMenuItem, toolStripSeparator4, copyFullPathToolStripMenuItem, toolStripSeparator10, renameToolStripMenuItem, deleteToolStripMenuItem, swapFilesToolStripMenuItem, toolStripMenuItem2, toolStripSeparator3, copyToolStripMenuItem, pasteToolStripMenuItem, toolStripSeparator9, encodingToolStripMenuItem });
         editToolStripMenuItem.Name = "editToolStripMenuItem";
-        editToolStripMenuItem.Size = new Size(39, 20);
+        editToolStripMenuItem.Size = new Size(42, 21);
         editToolStripMenuItem.Text = "Edit";
         // 
         // editInApplicationToolStripMenuItem
         // 
         editInApplicationToolStripMenuItem.Name = "editInApplicationToolStripMenuItem";
         editInApplicationToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.E;
-        editInApplicationToolStripMenuItem.Size = new Size(225, 22);
+        editInApplicationToolStripMenuItem.Size = new Size(237, 22);
         editInApplicationToolStripMenuItem.Text = "Edit In Application...";
         editInApplicationToolStripMenuItem.Click += MenuEditOpenInAppClicked;
         // 
@@ -204,33 +209,33 @@ partial class MainWindow {
         // 
         editHexToolStripMenuItem.Name = "editHexToolStripMenuItem";
         editHexToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.E;
-        editHexToolStripMenuItem.Size = new Size(225, 22);
+        editHexToolStripMenuItem.Size = new Size(237, 22);
         editHexToolStripMenuItem.Text = "Edit Hex...";
         editHexToolStripMenuItem.Click += MenuEditOpenAsHexClicked;
         // 
         // toolStripSeparator4
         // 
         toolStripSeparator4.Name = "toolStripSeparator4";
-        toolStripSeparator4.Size = new Size(222, 6);
+        toolStripSeparator4.Size = new Size(234, 6);
         // 
         // copyFullPathToolStripMenuItem
         // 
         copyFullPathToolStripMenuItem.Name = "copyFullPathToolStripMenuItem";
         copyFullPathToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.C;
-        copyFullPathToolStripMenuItem.Size = new Size(225, 22);
+        copyFullPathToolStripMenuItem.Size = new Size(237, 22);
         copyFullPathToolStripMenuItem.Text = "Copy Full Path";
         copyFullPathToolStripMenuItem.Click += MenuEditCopyPathClicked;
         // 
         // toolStripSeparator10
         // 
         toolStripSeparator10.Name = "toolStripSeparator10";
-        toolStripSeparator10.Size = new Size(222, 6);
+        toolStripSeparator10.Size = new Size(234, 6);
         // 
         // renameToolStripMenuItem
         // 
         renameToolStripMenuItem.Name = "renameToolStripMenuItem";
         renameToolStripMenuItem.ShortcutKeys = Keys.F2;
-        renameToolStripMenuItem.Size = new Size(225, 22);
+        renameToolStripMenuItem.Size = new Size(237, 22);
         renameToolStripMenuItem.Text = "Rename...";
         renameToolStripMenuItem.Click += MenuEditRenameClicked;
         // 
@@ -238,7 +243,7 @@ partial class MainWindow {
         // 
         deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
         deleteToolStripMenuItem.ShortcutKeys = Keys.Delete;
-        deleteToolStripMenuItem.Size = new Size(225, 22);
+        deleteToolStripMenuItem.Size = new Size(237, 22);
         deleteToolStripMenuItem.Text = "Delete";
         deleteToolStripMenuItem.Click += MenuEditDeleteClicked;
         // 
@@ -246,7 +251,7 @@ partial class MainWindow {
         // 
         swapFilesToolStripMenuItem.Name = "swapFilesToolStripMenuItem";
         swapFilesToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.G;
-        swapFilesToolStripMenuItem.Size = new Size(225, 22);
+        swapFilesToolStripMenuItem.Size = new Size(237, 22);
         swapFilesToolStripMenuItem.Text = "Swap";
         swapFilesToolStripMenuItem.Click += MenuEditSwapFileClicked;
         // 
@@ -254,20 +259,20 @@ partial class MainWindow {
         // 
         toolStripMenuItem2.Name = "toolStripMenuItem2";
         toolStripMenuItem2.ShortcutKeys = Keys.Control | Keys.D;
-        toolStripMenuItem2.Size = new Size(225, 22);
+        toolStripMenuItem2.Size = new Size(237, 22);
         toolStripMenuItem2.Text = "Duplicate";
         toolStripMenuItem2.Click += MenuEditDuplicateButtonClicked;
         // 
         // toolStripSeparator3
         // 
         toolStripSeparator3.Name = "toolStripSeparator3";
-        toolStripSeparator3.Size = new Size(222, 6);
+        toolStripSeparator3.Size = new Size(234, 6);
         // 
         // copyToolStripMenuItem
         // 
         copyToolStripMenuItem.Name = "copyToolStripMenuItem";
         copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
-        copyToolStripMenuItem.Size = new Size(225, 22);
+        copyToolStripMenuItem.Size = new Size(237, 22);
         copyToolStripMenuItem.Text = "Copy";
         copyToolStripMenuItem.Click += MenuEditCopyClicked;
         // 
@@ -275,35 +280,61 @@ partial class MainWindow {
         // 
         pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
         pasteToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+V";
-        pasteToolStripMenuItem.Size = new Size(225, 22);
+        pasteToolStripMenuItem.Size = new Size(237, 22);
         pasteToolStripMenuItem.Text = "Paste";
         pasteToolStripMenuItem.Click += MenuEditPasteClicked;
+        // 
+        // toolStripSeparator9
+        // 
+        toolStripSeparator9.Name = "toolStripSeparator9";
+        toolStripSeparator9.Size = new Size(234, 6);
+        // 
+        // encodingToolStripMenuItem
+        // 
+        encodingToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { writeJISToolStripMenuItem, writeGBKToolStripMenuItem });
+        encodingToolStripMenuItem.Name = "encodingToolStripMenuItem";
+        encodingToolStripMenuItem.Size = new Size(237, 22);
+        encodingToolStripMenuItem.Text = "Encoding";
+        // 
+        // writeJISToolStripMenuItem
+        // 
+        writeJISToolStripMenuItem.Name = "writeJISToolStripMenuItem";
+        writeJISToolStripMenuItem.Size = new Size(180, 22);
+        writeJISToolStripMenuItem.Text = "Write JIS";
+        writeJISToolStripMenuItem.Click += writeJISToolStripMenuItem_Click;
+        // 
+        // writeGBKToolStripMenuItem
+        // 
+        writeGBKToolStripMenuItem.Name = "writeGBKToolStripMenuItem";
+        writeGBKToolStripMenuItem.Size = new Size(180, 22);
+        writeGBKToolStripMenuItem.Text = "Write GBK";
+        writeGBKToolStripMenuItem.Click += writeGBKToolStripMenuItem_Click;
         // 
         // viewToolStripMenuItem
         // 
         viewToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { refreshToolStripMenuItem, toolStripSeparator6, goToParentToolStripMenuItem, goBackToolStripMenuItem, goForwardToolStripMenuItem, toolStripSeparator8, wordWrapMenuItem, toolStripSeparator7, showEmptyPnaFilesMenuItem, showHexMenuItem, showTerminalMenuItem });
         viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-        viewToolStripMenuItem.Size = new Size(44, 20);
+        viewToolStripMenuItem.Size = new Size(47, 21);
         viewToolStripMenuItem.Text = "View";
         // 
         // refreshToolStripMenuItem
         // 
         refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
         refreshToolStripMenuItem.ShortcutKeys = Keys.F5;
-        refreshToolStripMenuItem.Size = new Size(234, 22);
+        refreshToolStripMenuItem.Size = new Size(249, 22);
         refreshToolStripMenuItem.Text = "Refresh";
         refreshToolStripMenuItem.Click += MenuViewRefreshClicked;
         // 
         // toolStripSeparator6
         // 
         toolStripSeparator6.Name = "toolStripSeparator6";
-        toolStripSeparator6.Size = new Size(231, 6);
+        toolStripSeparator6.Size = new Size(246, 6);
         // 
         // goToParentToolStripMenuItem
         // 
         goToParentToolStripMenuItem.Name = "goToParentToolStripMenuItem";
         goToParentToolStripMenuItem.ShortcutKeyDisplayString = "Backspace";
-        goToParentToolStripMenuItem.Size = new Size(234, 22);
+        goToParentToolStripMenuItem.Size = new Size(249, 22);
         goToParentToolStripMenuItem.Text = "Go To Parent";
         goToParentToolStripMenuItem.Click += MenuViewGoToParentClicked;
         // 
@@ -311,7 +342,7 @@ partial class MainWindow {
         // 
         goBackToolStripMenuItem.Name = "goBackToolStripMenuItem";
         goBackToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.Left;
-        goBackToolStripMenuItem.Size = new Size(234, 22);
+        goBackToolStripMenuItem.Size = new Size(249, 22);
         goBackToolStripMenuItem.Text = "Go Back";
         goBackToolStripMenuItem.Click += MenuViewGoBackClicked;
         // 
@@ -319,35 +350,35 @@ partial class MainWindow {
         // 
         goForwardToolStripMenuItem.Name = "goForwardToolStripMenuItem";
         goForwardToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.Right;
-        goForwardToolStripMenuItem.Size = new Size(234, 22);
+        goForwardToolStripMenuItem.Size = new Size(249, 22);
         goForwardToolStripMenuItem.Text = "Go Forward";
         goForwardToolStripMenuItem.Click += MenuViewGoForwardClicked;
         // 
         // toolStripSeparator8
         // 
         toolStripSeparator8.Name = "toolStripSeparator8";
-        toolStripSeparator8.Size = new Size(231, 6);
+        toolStripSeparator8.Size = new Size(246, 6);
         // 
         // wordWrapMenuItem
         // 
         wordWrapMenuItem.CheckOnClick = true;
         wordWrapMenuItem.Name = "wordWrapMenuItem";
         wordWrapMenuItem.ShortcutKeys = Keys.Alt | Keys.Z;
-        wordWrapMenuItem.Size = new Size(234, 22);
+        wordWrapMenuItem.Size = new Size(249, 22);
         wordWrapMenuItem.Text = "Word Wrap";
         wordWrapMenuItem.Click += MenuViewWordWrapClicked;
         // 
         // toolStripSeparator7
         // 
         toolStripSeparator7.Name = "toolStripSeparator7";
-        toolStripSeparator7.Size = new Size(231, 6);
+        toolStripSeparator7.Size = new Size(246, 6);
         // 
         // showEmptyPnaFilesMenuItem
         // 
         showEmptyPnaFilesMenuItem.CheckOnClick = true;
         showEmptyPnaFilesMenuItem.Name = "showEmptyPnaFilesMenuItem";
         showEmptyPnaFilesMenuItem.ShortcutKeys = Keys.Control | Keys.P;
-        showEmptyPnaFilesMenuItem.Size = new Size(234, 22);
+        showEmptyPnaFilesMenuItem.Size = new Size(249, 22);
         showEmptyPnaFilesMenuItem.Text = "Show Empty PNA Files";
         showEmptyPnaFilesMenuItem.CheckStateChanged += MenuViewShowEmptyPnaChecked;
         showEmptyPnaFilesMenuItem.Click += MenuViewShowEmptyPNAFilesClicked;
@@ -357,7 +388,7 @@ partial class MainWindow {
         showHexMenuItem.CheckOnClick = true;
         showHexMenuItem.Name = "showHexMenuItem";
         showHexMenuItem.ShortcutKeys = Keys.Control | Keys.H;
-        showHexMenuItem.Size = new Size(234, 22);
+        showHexMenuItem.Size = new Size(249, 22);
         showHexMenuItem.Text = "Show Hex Viewer";
         showHexMenuItem.CheckedChanged += MenuViewShowHexChecked;
         // 
@@ -367,7 +398,7 @@ partial class MainWindow {
         showTerminalMenuItem.Name = "showTerminalMenuItem";
         showTerminalMenuItem.ShortcutKeyDisplayString = "Ctrl+~";
         showTerminalMenuItem.ShortcutKeys = Keys.Control | Keys.Oemtilde;
-        showTerminalMenuItem.Size = new Size(234, 22);
+        showTerminalMenuItem.Size = new Size(249, 22);
         showTerminalMenuItem.Text = "Show Terminal";
         showTerminalMenuItem.CheckStateChanged += MenuViewShowTerminalCheckChanged;
         // 
@@ -375,9 +406,9 @@ partial class MainWindow {
         // 
         fileListView.Columns.AddRange(new ColumnHeader[] { fileListViewNameColumn, fileListViewSizeColumn });
         fileListView.Dock = DockStyle.Fill;
-        fileListView.Location = new Point(4, 31);
+        fileListView.Location = new Point(4, 33);
         fileListView.Name = "fileListView";
-        fileListView.Size = new Size(346, 369);
+        fileListView.Size = new Size(346, 425);
         fileListView.TabIndex = 2;
         fileListView.UseCompatibleStateImageBehavior = false;
         fileListView.View = View.Details;
@@ -399,7 +430,7 @@ partial class MainWindow {
         // statusStrip
         // 
         statusStrip.Items.AddRange(new ToolStripItem[] { statusLabel, fillerLabel, taskLabel, progressBar, cancelButton, fileInfoLabel });
-        statusStrip.Location = new Point(0, 428);
+        statusStrip.Location = new Point(0, 488);
         statusStrip.Name = "statusStrip";
         statusStrip.Size = new Size(800, 22);
         statusStrip.TabIndex = 3;
@@ -424,7 +455,7 @@ partial class MainWindow {
         // progressBar
         // 
         progressBar.Name = "progressBar";
-        progressBar.Size = new Size(100, 16);
+        progressBar.Size = new Size(100, 18);
         progressBar.Visible = false;
         // 
         // cancelButton
@@ -448,7 +479,7 @@ partial class MainWindow {
         // 
         filePreviewerSplitContainer.Dock = DockStyle.Fill;
         filePreviewerSplitContainer.FixedPanel = FixedPanel.Panel1;
-        filePreviewerSplitContainer.Location = new Point(0, 24);
+        filePreviewerSplitContainer.Location = new Point(0, 25);
         filePreviewerSplitContainer.Name = "filePreviewerSplitContainer";
         // 
         // filePreviewerSplitContainer.Panel1
@@ -456,29 +487,29 @@ partial class MainWindow {
         filePreviewerSplitContainer.Panel1.Controls.Add(fileListView);
         filePreviewerSplitContainer.Panel1.Controls.Add(panel1);
         filePreviewerSplitContainer.Panel1.Controls.Add(pathTextBox);
-        filePreviewerSplitContainer.Panel1.Padding = new Padding(4, 4, 0, 4);
+        filePreviewerSplitContainer.Panel1.Padding = new Padding(4, 5, 0, 5);
         // 
         // filePreviewerSplitContainer.Panel2
         // 
         filePreviewerSplitContainer.Panel2.Controls.Add(terminalPreviewerSplitContainer);
-        filePreviewerSplitContainer.Panel2.Margin = new Padding(4);
-        filePreviewerSplitContainer.Size = new Size(800, 404);
+        filePreviewerSplitContainer.Panel2.Margin = new Padding(4, 5, 4, 5);
+        filePreviewerSplitContainer.Size = new Size(800, 463);
         filePreviewerSplitContainer.SplitterDistance = 350;
         filePreviewerSplitContainer.TabIndex = 4;
         // 
         // panel1
         // 
         panel1.Dock = DockStyle.Top;
-        panel1.Location = new Point(4, 27);
+        panel1.Location = new Point(4, 28);
         panel1.Name = "panel1";
-        panel1.Padding = new Padding(0, 0, 0, 4);
-        panel1.Size = new Size(346, 4);
+        panel1.Padding = new Padding(0, 0, 0, 5);
+        panel1.Size = new Size(346, 5);
         panel1.TabIndex = 3;
         // 
         // pathTextBox
         // 
         pathTextBox.Dock = DockStyle.Top;
-        pathTextBox.Location = new Point(4, 4);
+        pathTextBox.Location = new Point(4, 5);
         pathTextBox.Name = "pathTextBox";
         pathTextBox.Size = new Size(346, 23);
         pathTextBox.TabIndex = 4;
@@ -498,8 +529,9 @@ partial class MainWindow {
         // terminalPreviewerSplitContainer.Panel2
         // 
         terminalPreviewerSplitContainer.Panel2.Controls.Add(panel4);
-        terminalPreviewerSplitContainer.Size = new Size(446, 404);
-        terminalPreviewerSplitContainer.SplitterDistance = 301;
+        terminalPreviewerSplitContainer.Size = new Size(446, 463);
+        terminalPreviewerSplitContainer.SplitterDistance = 344;
+        terminalPreviewerSplitContainer.SplitterWidth = 5;
         terminalPreviewerSplitContainer.TabIndex = 3;
         // 
         // previewerTabControl
@@ -510,7 +542,7 @@ partial class MainWindow {
         previewerTabControl.Location = new Point(0, 0);
         previewerTabControl.Name = "previewerTabControl";
         previewerTabControl.SelectedIndex = 0;
-        previewerTabControl.Size = new Size(446, 301);
+        previewerTabControl.Size = new Size(446, 344);
         previewerTabControl.TabIndex = 0;
         // 
         // textPreviewTab
@@ -518,10 +550,10 @@ partial class MainWindow {
         textPreviewTab.Controls.Add(textPreviewBox);
         textPreviewTab.Controls.Add(panel2);
         textPreviewTab.Controls.Add(panel3);
-        textPreviewTab.Location = new Point(4, 24);
+        textPreviewTab.Location = new Point(4, 26);
         textPreviewTab.Name = "textPreviewTab";
         textPreviewTab.Padding = new Padding(3);
-        textPreviewTab.Size = new Size(438, 273);
+        textPreviewTab.Size = new Size(438, 314);
         textPreviewTab.TabIndex = 1;
         textPreviewTab.Text = "Text";
         textPreviewTab.UseVisualStyleBackColor = true;
@@ -537,11 +569,11 @@ partial class MainWindow {
         textPreviewBox.Dock = DockStyle.Fill;
         textPreviewBox.Lexer = ScintillaNET.Lexer.Cpp;
         textPreviewBox.LexerName = "cpp";
-        textPreviewBox.Location = new Point(3, 37);
+        textPreviewBox.Location = new Point(3, 42);
         textPreviewBox.Name = "textPreviewBox";
         textPreviewBox.ReadOnly = true;
         textPreviewBox.ScrollWidth = 49;
-        textPreviewBox.Size = new Size(432, 233);
+        textPreviewBox.Size = new Size(432, 269);
         textPreviewBox.TabIndents = true;
         textPreviewBox.TabIndex = 3;
         textPreviewBox.UseRightToLeftReadingLayout = false;
@@ -551,10 +583,10 @@ partial class MainWindow {
         // 
         panel2.AutoSize = true;
         panel2.Dock = DockStyle.Top;
-        panel2.Location = new Point(3, 33);
+        panel2.Location = new Point(3, 37);
         panel2.Name = "panel2";
-        panel2.Padding = new Padding(0, 0, 0, 4);
-        panel2.Size = new Size(432, 4);
+        panel2.Padding = new Padding(0, 0, 0, 5);
+        panel2.Size = new Size(432, 5);
         panel2.TabIndex = 1;
         // 
         // panel3
@@ -564,8 +596,8 @@ partial class MainWindow {
         panel3.Dock = DockStyle.Top;
         panel3.Location = new Point(3, 3);
         panel3.Name = "panel3";
-        panel3.Padding = new Padding(4);
-        panel3.Size = new Size(432, 30);
+        panel3.Padding = new Padding(4, 5, 4, 5);
+        panel3.Size = new Size(432, 34);
         panel3.TabIndex = 2;
         // 
         // encodingDropDown
@@ -573,18 +605,18 @@ partial class MainWindow {
         encodingDropDown.Dock = DockStyle.Fill;
         encodingDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
         encodingDropDown.FormattingEnabled = true;
-        encodingDropDown.Location = new Point(72, 4);
+        encodingDropDown.Location = new Point(72, 5);
         encodingDropDown.Name = "encodingDropDown";
-        encodingDropDown.Size = new Size(356, 23);
+        encodingDropDown.Size = new Size(356, 25);
         encodingDropDown.TabIndex = 0;
         encodingDropDown.SelectedIndexChanged += EncodingDropDownIndexChanged;
         // 
         // label1
         // 
         label1.Dock = DockStyle.Left;
-        label1.Location = new Point(4, 4);
+        label1.Location = new Point(4, 5);
         label1.Name = "label1";
-        label1.Size = new Size(68, 22);
+        label1.Size = new Size(68, 24);
         label1.TabIndex = 1;
         label1.Text = "Encoding";
         label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -592,10 +624,10 @@ partial class MainWindow {
         // imagePreviewTab
         // 
         imagePreviewTab.Controls.Add(imagePreviewBox);
-        imagePreviewTab.Location = new Point(4, 24);
+        imagePreviewTab.Location = new Point(4, 26);
         imagePreviewTab.Name = "imagePreviewTab";
         imagePreviewTab.Padding = new Padding(3);
-        imagePreviewTab.Size = new Size(438, 273);
+        imagePreviewTab.Size = new Size(192, 70);
         imagePreviewTab.TabIndex = 0;
         imagePreviewTab.Text = "Image";
         imagePreviewTab.UseVisualStyleBackColor = true;
@@ -605,7 +637,7 @@ partial class MainWindow {
         imagePreviewBox.Dock = DockStyle.Fill;
         imagePreviewBox.Location = new Point(3, 3);
         imagePreviewBox.Name = "imagePreviewBox";
-        imagePreviewBox.Size = new Size(432, 267);
+        imagePreviewBox.Size = new Size(186, 64);
         imagePreviewBox.SizeMode = PictureBoxSizeMode.Zoom;
         imagePreviewBox.TabIndex = 0;
         imagePreviewBox.TabStop = false;
@@ -618,8 +650,8 @@ partial class MainWindow {
         panel4.Dock = DockStyle.Fill;
         panel4.Location = new Point(0, 0);
         panel4.Name = "panel4";
-        panel4.Padding = new Padding(4);
-        panel4.Size = new Size(446, 99);
+        panel4.Padding = new Padding(4, 5, 4, 5);
+        panel4.Size = new Size(446, 114);
         panel4.TabIndex = 4;
         // 
         // terminalOutputTextBox
@@ -632,11 +664,11 @@ partial class MainWindow {
         terminalOutputTextBox.CaretStyle = ScintillaNET.CaretStyle.Invisible;
         terminalOutputTextBox.Dock = DockStyle.Fill;
         terminalOutputTextBox.LexerName = null;
-        terminalOutputTextBox.Location = new Point(4, 4);
+        terminalOutputTextBox.Location = new Point(4, 5);
         terminalOutputTextBox.Name = "terminalOutputTextBox";
         terminalOutputTextBox.ReadOnly = true;
         terminalOutputTextBox.ScrollWidth = 49;
-        terminalOutputTextBox.Size = new Size(438, 66);
+        terminalOutputTextBox.Size = new Size(438, 79);
         terminalOutputTextBox.TabIndents = true;
         terminalOutputTextBox.TabIndex = 5;
         terminalOutputTextBox.UseRightToLeftReadingLayout = false;
@@ -645,7 +677,7 @@ partial class MainWindow {
         // panel5
         // 
         panel5.Dock = DockStyle.Bottom;
-        panel5.Location = new Point(4, 70);
+        panel5.Location = new Point(4, 84);
         panel5.Name = "panel5";
         panel5.Size = new Size(438, 2);
         panel5.TabIndex = 4;
@@ -654,16 +686,16 @@ partial class MainWindow {
         // 
         terminalInputTextBox.BorderStyle = BorderStyle.FixedSingle;
         terminalInputTextBox.Dock = DockStyle.Bottom;
-        terminalInputTextBox.Location = new Point(4, 72);
+        terminalInputTextBox.Location = new Point(4, 86);
         terminalInputTextBox.Name = "terminalInputTextBox";
         terminalInputTextBox.Size = new Size(438, 23);
         terminalInputTextBox.TabIndex = 2;
         // 
         // MainWindow
         // 
-        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleDimensions = new SizeF(7F, 17F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(800, 450);
+        ClientSize = new Size(800, 510);
         Controls.Add(filePreviewerSplitContainer);
         Controls.Add(statusStrip);
         Controls.Add(menuStrip);
@@ -762,4 +794,8 @@ partial class MainWindow {
     private ToolStripMenuItem showTerminalMenuItem;
     private ToolStripStatusLabel fileInfoLabel;
     private ToolStripMenuItem toolStripMenuItem2;
+    private ToolStripSeparator toolStripSeparator9;
+    private ToolStripMenuItem encodingToolStripMenuItem;
+    private ToolStripMenuItem writeJISToolStripMenuItem;
+    private ToolStripMenuItem writeGBKToolStripMenuItem;
 }

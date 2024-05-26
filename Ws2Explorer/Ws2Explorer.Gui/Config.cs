@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using Ws2Explorer.Compiler;
 
 namespace Ws2Explorer.Gui;
 
@@ -22,6 +23,11 @@ class Config {
     public int WindowHeight { get; set; } = 600;
     public int? WindowX { get; set; } = null;
     public int? WindowY { get; set; } = null;
+    public string EncodingWrite 
+    {
+        get { return Ws2Writer.EncodingName; }
+        set { Ws2Writer.EncodingName = value; }
+    }
 
     public static Config Load(string path) {
         try {
